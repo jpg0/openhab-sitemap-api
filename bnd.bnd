@@ -1,0 +1,10 @@
+Bundle-SymbolicName: ${project.artifactId}
+Import-Package: org.eclipse.smarthome.model.sitemap.sitemap,\
+    org.eclipse.emf.ecore,\
+    org.eclipse.emf.common.notify,\
+    org.eclipse.emf.common.util,\
+    org.apache.commons.lang,\
+    org.slf4j
+Export-Package: org.openhab.api.sitemap,\
+    org.openhab.api.sitemap.builder,\
+    org.openhab.api.sitemap.model
