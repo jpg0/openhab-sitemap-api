@@ -14,9 +14,12 @@
 package org.openhab.api.sitemap.builder;
 
 import org.openhab.api.sitemap.model.*;
+import org.openhab.api.sitemap.model.impl.FrameImpl;
+import org.openhab.api.sitemap.model.impl.SetpointImpl;
 import org.openhab.api.sitemap.model.impl.SwitchImpl;
 import org.openhab.api.sitemap.model.impl.TextImpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -37,5 +40,16 @@ public class WidgetFactory {
     public Switch newSwitch(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
             List<VisibilityRule> visibility, List<Mapping> mappings) {
         return new SwitchImpl(item, label, icon, labelColor, valueColor, visibility, mappings);
+    }
+
+    public Frame newFrame(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
+            List<VisibilityRule> visibility, List<Mapping> mappings, List<Widget<?>> children) {
+        return new FrameImpl(item, label, icon, labelColor, valueColor, visibility, children);
+    }
+
+    public Setpoint newSetpoint(String item, String label, String icon, List<ColorArray> labelColor,
+            List<ColorArray> valueColor, List<VisibilityRule> visibility, BigDecimal minValue, BigDecimal maxValue,
+            BigDecimal step) {
+        return new SetpointImpl(item, label, icon, labelColor, valueColor, visibility, minValue, maxValue, step);
     }
 }

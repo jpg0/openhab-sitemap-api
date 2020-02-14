@@ -15,6 +15,7 @@ package org.openhab.api.sitemap.model.impl;
 
 import org.openhab.api.sitemap.model.*;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class LinkableWidgetImpl<T extends org.eclipse.smarthome.model.sitemap.si
     public LinkableWidgetImpl(String item, String label, String icon, List<ColorArray> labelColor,
             List<ColorArray> valueColor, List<VisibilityRule> visibility, List<Widget<?>> children) {
         super(item, label, icon, labelColor, valueColor, visibility);
-        this.children = children;
+        this.children = (children == null ? Collections.emptyList() : children);
     }
 
     @Override
