@@ -65,6 +65,11 @@ public class WidgetFactory {
         return new DefaultImpl(item, label, icon, labelColor, valueColor, visibility, height);
     }
 
+    public Group newGroup(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
+            List<VisibilityRule> visibility, List<Widget<?>> children) {
+        return new GroupImpl(item, label, icon, labelColor, valueColor, visibility, children);
+    }
+
     public Slider newSlider(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
             List<VisibilityRule> visibility, int frequency, boolean switchEnabled, BigDecimal minValue,
             BigDecimal maxValue, BigDecimal step) {
