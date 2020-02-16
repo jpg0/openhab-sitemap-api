@@ -64,4 +64,11 @@ public class WidgetFactory {
             List<VisibilityRule> visibility, int height) {
         return new DefaultImpl(item, label, icon, labelColor, valueColor, visibility, height);
     }
+
+    public Slider newSlider(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
+            List<VisibilityRule> visibility, int frequency, boolean switchEnabled, BigDecimal minValue,
+            BigDecimal maxValue, BigDecimal step) {
+        return new SliderImpl(item, label, icon, labelColor, valueColor, visibility, frequency, switchEnabled, minValue,
+                maxValue, step);
+    }
 }
