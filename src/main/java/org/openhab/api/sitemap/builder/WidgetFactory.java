@@ -34,6 +34,11 @@ public class WidgetFactory {
             return new TextImpl(item, label, icon, labelColor, valueColor, visibility, children);
         }
 
+    public Frame newFrame(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
+            List<VisibilityRule> visibility, List<Widget<?>> children) {
+        return new FrameImpl(item, label, icon, labelColor, valueColor, visibility, children);
+    }
+
     public Switch newSwitch(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
             List<VisibilityRule> visibility, List<Mapping> mappings) {
         return new SwitchImpl(item, label, icon, labelColor, valueColor, visibility, mappings);
