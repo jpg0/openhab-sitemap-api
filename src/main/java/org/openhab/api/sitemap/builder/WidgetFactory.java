@@ -14,10 +14,7 @@
 package org.openhab.api.sitemap.builder;
 
 import org.openhab.api.sitemap.model.*;
-import org.openhab.api.sitemap.model.impl.FrameImpl;
-import org.openhab.api.sitemap.model.impl.SetpointImpl;
-import org.openhab.api.sitemap.model.impl.SwitchImpl;
-import org.openhab.api.sitemap.model.impl.TextImpl;
+import org.openhab.api.sitemap.model.impl.*;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -42,14 +39,24 @@ public class WidgetFactory {
         return new SwitchImpl(item, label, icon, labelColor, valueColor, visibility, mappings);
     }
 
-    public Frame newFrame(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
-            List<VisibilityRule> visibility, List<Mapping> mappings, List<Widget<?>> children) {
-        return new FrameImpl(item, label, icon, labelColor, valueColor, visibility, children);
+    public Selection newSelection(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
+            List<VisibilityRule> visibility, List<Mapping> mappings) {
+        return new SelectionImpl(item, label, icon, labelColor, valueColor, visibility, mappings);
+    }
+
+    public Webview newWebview(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
+            List<VisibilityRule> visibility, int height, String url) {
+        return new WebviewImpl(item, label, icon, labelColor, valueColor, visibility, height, url);
     }
 
     public Setpoint newSetpoint(String item, String label, String icon, List<ColorArray> labelColor,
             List<ColorArray> valueColor, List<VisibilityRule> visibility, BigDecimal minValue, BigDecimal maxValue,
             BigDecimal step) {
         return new SetpointImpl(item, label, icon, labelColor, valueColor, visibility, minValue, maxValue, step);
+    }
+
+    public Default newDefault(String item, String label, String icon, List<ColorArray> labelColor, List<ColorArray> valueColor,
+            List<VisibilityRule> visibility, int height) {
+        return new DefaultImpl(item, label, icon, labelColor, valueColor, visibility, height);
     }
 }
