@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.smarthome.model.sitemap.sitemap.*;
 import org.openhab.api.sitemap.model.ELessObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -144,6 +145,14 @@ public class EMFLessProxyGenerator {
         }
 
         private EClass generateEClassForClass(Class<E> clazz) {
+
+//            try {
+//                Method factoryMethod = SitemapFactory.class.getMethod("create" + clazz.getSimpleName());
+//                return ((EObject)factoryMethod.invoke(SitemapFactory.eINSTANCE)).eClass();
+//            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+//                throw new UnsupportedOperationException("Failed to get eclass for " + clazz, e);
+//            }
+
             return (EClass)Proxy.newProxyInstance(getClass().getClassLoader(), new Class<?>[]{EClass.class}, (Object proxy, Method method, Object[] args) -> {
                 if(method.getName().equals("getInstanceTypeName")) {
                     return clazz.getName();
